@@ -8,20 +8,28 @@ const messages = [
 ];
 function App() {
   const [step, setStep] = useState(1);
+  const [close,setClose] = useState(true);
   
   function prevHandler() {
-    if (step > 1) setStep(step-1);
+    if (step > 1) setStep((s) => s -1);
     
   }
   function nextHandler() {
    if (step < 3) setStep(step+1);
   }
 
+   
+  
 
 
 
   return (
    <>
+   <button className='close' onClick={() => (setClose((s) => !s))}>
+           &times;
+
+        </button>
+   {close &&
       <div className='steps'>
         <div className='numbers'>
           <div className={step>=1 ? "active" : ""}>1</div>
@@ -35,7 +43,9 @@ function App() {
           <button style={{ backgroundColor: "#7950f2" , color:"#fff" }} onClick={nextHandler}> Next</button>
 
         </div>
+        
       </div>
+}
    </>
   )
 }
